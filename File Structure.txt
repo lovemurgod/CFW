@@ -1,0 +1,26 @@
+corporate-fashion-week/
+├── index.html          (Home Page)
+├── events.html         (Events Page)
+├── blog.html           (Blog Page)
+├── services.html       (Services Page)
+├── about.html          (About Page)
+├── contact.html        (Contact Page)
+├── css/
+│   └── style.css     (Main Stylesheet)
+├── assets/
+│   ├── images/
+│   │   ├── background1.jpg  (Placeholder Home Background)
+│   │   ├── background2.jpg  (Placeholder Services Background)
+│   │   ├── background3.jpg  (Placeholder About Background)
+│   │   ├── background4.jpg  (Placeholder Contact Background)
+│   │   ├── blogimage1.jpg (Placeholder Blog Image)
+│   │   ├── services1.jpg  (Placeholder Image)
+│   │   ├── services2.jpg  (Placeholder Image)
+│   │   ├── services3.jpg  (Placeholder Image)
+│   │   ├── services4.jpg  (Placeholder Image)
+│   │   ├── services5.jpg  (Placeholder Image)
+│   │   ├── About.jpg (Placeholder Image)
+│   │   └── Logo.png (Placeholder Image)
+│   └── js/
+│       └── script.js      (Main Javascript File)
+└── README.md
