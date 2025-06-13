@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Fashion Week - Bengaluru 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A2A40;
+            --accent: #F5C243;
+            --neutral: #FFFFFF;
+            --muted: #F4F4F4;
+            --text: #1E1E1E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(26, 42, 64, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--neutral);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--neutral);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--neutral);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Home Page */
+        #home {
+            background: linear-gradient(135deg, rgba(26, 42, 64, 0.8), rgba(26, 42, 64, 0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23F4F4F4" width="1200" height="800"/><circle fill="%23F5C243" opacity="0.1" cx="200" cy="200" r="100"/><circle fill="%231A2A40" opacity="0.05" cx="800" cy="400" r="150"/><circle fill="%23F5C243" opacity="0.08" cx="1000" cy="600" r="80"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--neutral);
+            padding-top: 0;
+            min-height: 100vh;
+        }
+
+        #home.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--neutral);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 194, 67, 0.3);
+        }
+
+        /* Events Page */
+        #events {
+            background: var(--neutral);
+            padding: 4rem 2rem;
+        }
+
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .event-card {
+            background: var(--neutral);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, var(--muted), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .event-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .ticket-button {
+            background: var(--primary);
+            color: var(--neutral);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .ticket-button:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Blog Page */
+        #blog {
+            background: var(--muted);
+            padding: 4rem 2rem;
+        }
+
+        .blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--neutral);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .blog-header {
+            background: var(--primary);
+            color: var(--neutral);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .blog-content {
+            padding: 3rem 2rem;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 10px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral);
+            font-size: 1.2rem;
+        }
+
+        .ticket-booking {
+            background: var(--muted);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .notes-toggle {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .notes-content {
+            display: none;
+            background: var(--neutral);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-display {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .payment-placeholder {
+            background: var(--neutral);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px dashed #e0e0e0;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Services Page */
+        #services {
+            background: linear-gradient(135deg, rgba(244, 244, 244, 0.5), rgba(255, 255, 255, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FFFFFF" width="1200" height="800"/><circle fill="%23F5C243" opacity="0.05" cx="300" cy="300" r="120"/><circle fill="%231A2A40" opacity="0.03" cx="900" cy="500" r="180"/></svg>');
+            background-size: cover;
+            padding: 4rem 2rem;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-intro h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .services-intro p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--neutral);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral);
+            font-size: 1.1rem;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* About Page */
+        #about {
+            background: linear-gradient(135deg, rgba(26, 42, 64, 0.05), rgba(245, 194, 67, 0.05)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23FFFFFF" width="1200" height="800"/><polygon fill="%23F5C243" opacity="0.08" points="0,0 400,300 0,600"/><polygon fill="%231A2A40" opacity="0.05" points="1200,800 800,500 1200,200"/></svg>');
+            background-size: cover;
+            padding: 4rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-header h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .about-content {
+            background: var(--neutral);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral);
+            font-size: 1.1rem;
+        }
+
+        /* Contact Page */
+        #contact {
+            background: linear-gradient(135deg, rgba(245, 194, 67, 0.1), rgba(26, 42, 64, 0.05)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23F4F4F4" width="1200" height="800"/><rect fill="%23F5C243" opacity="0.1" x="0" y="0" width="600" height="400"/><rect fill="%231A2A40" opacity="0.05" x="600" y="400" width="600" height="400"/></svg>');
+            background-size: cover;
+            padding: 4rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-header h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            background: var(--neutral);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            background: var(--neutral);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: var(--primary);
+            color: var(--neutral);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">CFW 2025</a>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="events">Events</a></li>
+                <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <section id="home" class="page-section active">
+        <div class="hero-content">
+            <h1>CFW 2025</h1>
+            <h2>Corporate Fashion Week</h2>
+            <p>Corporate Fashion Week is India's first inclusive platform celebrating diversity, confidence, and innovation in professional fashion. From fashion shows and podcasts to print shoots and brand showcases, CFW empowers individuals and businesses to redefine corporate style for all ages, genders, body types, and backgrounds.</p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent);">Join the Movement</h3>
+            <p style="margin-bottom: 2rem;">Book your tickets now to attend our upcoming fashion shows and be part of a revolutionary experience that blends fashion, identity, and workplace confidence.</p>
+            <a href="#" class="cta-button" onclick="showPage('events')">Book Your Tickets</a>
+        </div>
+    </section>
+
+    <!-- Events Page -->
+    <section id="events" class="page-section">
+        <div class="events-container">
+            <h2 class="page-title">Upcoming Events</h2>
+            <div class="event-card fade-in">
+                <div class="event-image">Blog Image 1 Placeholder</div>
+                <div class="event-content">
+                    <h3>Audition Corporate Fashion Show - Karnataka Edition 2025</h3>
+                    <p><strong>Date:</strong> Saturday, 12 July 2025</p>
+                    <p><strong>Location:</strong> TBD</p>
+                    <p>Step into the spotlight. From boardroom to runway – it's your time to shine! We're calling all models, designers & stylists to be part of a fashion revolution redefining corporate style.</p>
+                    <button class="ticket-button" onclick="showPage('blog')">Buy Tickets</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Page -->
+    <section id="blog" class="page-section">
+        <div class="blog-container">
+            <div class="blog-header">
+                <h1>Audition Corporate Fashion Show - Karnataka Edition 2025</h1>
+                <div class="blog-meta">
+                    <p>Sat, 12 Jul | Location is TBD</p>
+                </div>
+            </div>
+            <div class="blog-content">
+                <p><strong>Audition Alert: Corporate Fashion Show – Karnataka Edition 2025</strong></p>
+                <p>Step into the spotlight. From boardroom to runway – it's your time to shine! We're calling all models, designers & stylists to be part of a fashion revolution redefining corporate style.</p>
+                <p>Auditions now open. Are you ready?</p>
+                
+                <div class="blog-image">Blog Image 1 Placeholder</div>
+                
+                <h3 style="color: var(--primary); margin: 2rem 0 1rem;">Time & Location</h3>
+                <p><strong>12 Jul 2025, 10:00 am – 2:00 pm</strong><br>Location is TBD</p>
+                
+                <h3 style="color: var(--primary); margin: 2rem 0 1rem;">About the event</h3>
+                <p><strong>Presented by CFW (Corporate Fashion Week)</strong></p>
+                <p>An inclusive fashion showcase redefining the boundaries of professional style, culture, and self-expression. From suits to saris, glasses to handbags — we're celebrating <strong>diversity in age, size, gender, and ethnicity</strong> with a fresh take on <strong>corporate fashion</strong>.</p>
+                <p>This event is more than a runway — it's a <strong>movement to empower individuals</strong> and <strong>highlight brands</strong> across India's professional fashion space.</p>
+                
+                <h4 style="color: var(--primary); margin: 2rem 0 1rem;">👠 Audition Criteria</h4>
+                <p><strong>For Models (All Genders):</strong></p>
+                <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                    <li>Age: 25–55 years</li>
+                </ul>
+                
+                <!-- Ticket Booking UI -->
+                <div class="ticket-booking">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Book Your Tickets</h3>
+                    
+                    <div class="form-group">
+                        <label for="ticket-type">Ticket Type</label>
+                        <select id="ticket-type">
+                            <option value="general">General Seat</option>
+                            <option value="premium" disabled>Premium Seat (Coming Soon)</option>
+                            <option value="diamond" disabled>Diamond (Coming Soon)</option>
+                        </select>
+                    </div>
+                    
+                    <p style="margin-bottom: 1rem;"><strong>Sale Ends:</strong> 11 Jul 2025</p>
+                    
+                    <button class="notes-toggle" onclick="toggleNotes()">📝 View Ticket Details</button>
+                    <div id="notes-content" class="notes-content">
+                        <p>This ticket includes Audition Premises access and refreshments</p>
+                    </div>
+                    
+                    <div class="price-display">₹999 + ₹24.98 service fee</div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <select id="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    
+                    <div class="payment-placeholder">
+                        <p>🔒 Secure Payment</p>
+                        <p>Google Pay • Powered by Stripe</p>
+                        <p><em>Payment integration coming soon</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="page-section">
+        <div class="services-container">
+            <div class="services-intro">
+                <h2>Our Services</h2>
+                <p>Corporate Fashion Week (CFW) is a multi-dimensional platform redefining professional style in India. We offer a range of services including inclusive fashion shows, brand photoshoots, and editorial features to help businesses showcase their products with impact. Through our modeling masterclasses, podcasts, and curated events, we empower individuals and brands to express confidence, creativity, and culture within the corporate fashion space. CFW also provides end-to-end event management, making it a one-stop destination for fashion-forward professionals and brands.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-image">Services Image 1</div>
+                    <div class="service-content">
+                        <h3>Fashion Shows & Runways</h3>
+                        <p>Curated events celebrating inclusive corporate fashion across India.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-image">Services Image 2</div>
+                    <div class="service-content">
+                        <h3>Brand Photoshoots & Editorials</h3>
+                        <p>Professional shoots tailored for fashion, accessories, and lifestyle brands.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-image">Services Image 3</div>
+                    <div class="service-content">
+                        <h3>CFW Podcast</h3>
+                        <p>Conversations with industry leaders, models, designers & changemakers.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-image">Services Image 4</div>
+                    <div class="service-content">
+                        <h3>Modeling Masterclasses & Workshops</h3>
+                        <p>Training sessions for aspiring models to build confidence and portfolios.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-image">Services Image 5</div>
+                    <div class="service-content">
+                        <h3>Event Management & Curation</h3>
+                        <p>Bespoke fashion experiences, launches, and corporate collaborations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page-section">
+        <div class="about-container">
+            <div class="about-header">
+                <h2>About CFW 2025</h2>
+            </div>
+            
+            <div class="about-content fade-in">
+                <p>Corporate Fashion Week (CFW) is India's premier talent agency dedicated to celebrating diversity, confidence, and innovation in professional fashion. Our platform offers a wide range of services, from curating fashion shows and producing engaging podcasts to orchestrating captivating print shoots and showcasing brands that redefine corporate style. We empower individuals and businesses to embrace diversity, regardless of age, gender, body type, or background.</p>
+                
+                <p>At CFW, our team is committed to redefining the fashion industry by providing inclusive opportunities for talented individuals. Our services aim to revolutionize the perception of corporate fashion, setting new standards for workplace confidence and individual expression.</p>
+                
+                <p>Our story is one of passion, creativity, and a relentless pursuit of inclusivity. We strive to stand out among our peers by offering a unique platform that embraces diversity and fosters innovation. Join us in our mission to redefine corporate style and elevate the fashion landscape with confidence and authenticity.</p>
+            </div>
+            
+            <div class="about-images">
+                <div class="about-image">About Image</div>
+                <div class="about-image">CFW Logo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page-section">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Get in Touch</h2>
+            </div>
+            
+            <div class="contact-info fade-in">
+                <p><strong>📞 8660820661</strong></p>
+                <p><strong>✉️ corporatefashionweek2025@gmail.com</strong></p>
+            </div>
+            
+            <form class="contact-form fade-in">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">Name</label>
+                        <input type="text" id="first-name" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="lastName" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your inquiry..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageSection = document.querySelectorAll('.page-section');
+        const navbar = document.getElementById('navbar');
+
+        // Show specific page
+        function showPage(pageName) {
+            // Hide all sections
+            pageSection.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show target section
+            document.getElementById(pageName).classList.add('active');
+            
+            // Update nav links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageName) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Navigation click handlers
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageName = link.dataset.page;
+                showPage(pageName);
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle notes function
+        function toggleNotes() {
+            const notesContent = document.getElementById('notes-content');
+            const toggle = document.querySelector('.notes-toggle');
+            
+            if (notesContent.style.display === 'none' || notesContent.style.display === '') {
+                notesContent.style.display = 'block';
+                toggle.textContent = '📝 Hide Ticket Details';
+            } else {
+                notesContent.style.display = 'none';
+                toggle.textContent = '📝 View Ticket Details';
+            }
+        }
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+        });
+
+        // Quantity and price calculator
+        document.getElementById('quantity').addEventListener('change', (e) => {
+            const quantity = parseInt(e.target.value);
+            const basePrice = 999;
+            const serviceFee = 24.98;
+            const total = (basePrice * quantity) + serviceFee;
+            
+            document.querySelector('.price-display').textContent = `₹${basePrice * quantity} + ₹${serviceFee} service fee = ₹${total.toFixed(2)}`;
+        });
+
+        // Smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .event-card, .about-content, .contact-info, .contact-form').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Initialize page
+        window.addEventListener('load', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
